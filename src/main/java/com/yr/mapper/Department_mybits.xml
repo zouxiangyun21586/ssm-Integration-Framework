@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace,namespace的值习惯上设置成包名+sql映射文件名,这样就能够保证namespace的值是唯一的 -->
+<mapper namespace="com.yr.mapper.Department_mybits"> <!-- 接口路径 -->
+    
+    <!-- Mapper 映射文件 -->
+    <!-- 查询多个结果，返回resultMap -->
+    <resultMap type="department" id="queryDepartment">
+        <id property="id" column="id" ></id>
+        <result property="name" column="name" />
+    </resultMap>
+    
+    <select id="pageQuery" resultMap="queryDepartment"> <!-- 对外部ResultMap的引用 -->
+    	select * from department 
+    </select>
+    
+    <insert id="insert" parameterType="department">
+    	INSERT INTO `department`(name) VALUES (#{name});
+    </insert>
+    
+</mapper>
